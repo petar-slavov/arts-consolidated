@@ -89,11 +89,6 @@ GET http://localhost:3000/products/1
 GET http://localhost:3000/categories
 ```
 
-### Get All Brands
-```bash
-GET http://localhost:3000/brands
-```
-
 ### Search Products (Elasticsearch)
 ```bash
 # Basic search
@@ -103,11 +98,6 @@ GET http://localhost:3000/search/products?q=phone
 GET http://localhost:3000/search/products?q=beauty&category=beauty&min_price=10&max_price=50
 ```
 
-### Reload Products from API
-```bash
-POST http://localhost:3000/reload-products
-```
-
 ## 🧪 Testing the Setup
 
 1. Start the services:
@@ -115,7 +105,7 @@ POST http://localhost:3000/reload-products
    docker compose up
    ```
 
-2. Wait for all services to be healthy and products to be loaded (check logs for "✅ Successfully loaded X products")
+2. Wait for all services to be healthy and products to be loaded (check logs for "Successfully loaded X products")
 
 3. Test the health endpoint:
    ```bash
@@ -162,50 +152,3 @@ POST http://localhost:3000/reload-products
 │   └── 01-init.sql        # MySQL initialization scripts
 └── README.md              # This file
 ```
-
-
-## 🔧 Configuration
-
-Environment variables can be modified in `docker-compose.yml`:
-
-- **MySQL**:
-  - `MYSQL_ROOT_PASSWORD`: root password
-  - `MYSQL_DATABASE`: database name
-  - `MYSQL_USER`: application user
-  - `MYSQL_PASSWORD`: application password
-
-- **Elasticsearch**:
-  - `ES_JAVA_OPTS`: JVM options (memory settings)
-
-- **Node.js App**:
-  - `NODE_ENV`: environment mode
-  - `DB_HOST`: MySQL host
-  - `DB_USER`: MySQL user
-  - `DB_PASSWORD`: MySQL password
-  - `DB_NAME`: MySQL database
-  - `ELASTICSEARCH_HOST`: Elasticsearch URL
-
-## 📦 Volumes
-
-Persistent data is stored in Docker volumes:
-- `mysql-data`: MySQL database files
-- `elasticsearch-data`: Elasticsearch indices
-
-## 🔍 Troubleshooting
-
-### Services not starting
-- Check if ports 3000, 3306, and 9200 are available
-- View logs: `docker compose logs`
-
-### Connection refused errors
-- Wait for health checks to pass (check with `docker compose ps`)
-- Services may take 30-60 seconds to fully initialize
-
-### Out of memory
-- Increase Docker Desktop memory allocation
-- Reduce Elasticsearch memory in `docker-compose.yml` (`ES_JAVA_OPTS`)
-
-## 📝 License
-
-ISC
-
