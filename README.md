@@ -32,11 +32,9 @@ The application will be available at http://localhost:3000
 - Hardcoded pagination limits
 - Limited error handling
 - Basic input validation only
-- No integration tests
+- Few tests
 - Single instance deployment only
 - No caching layer implemented
-- Full table scans for complex filters
-- Elasticsearch reindexing blocks API calls
 
 ## API Endpoints
 
